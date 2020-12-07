@@ -2,14 +2,14 @@ package com.exercise;
 
 public class Bill {
 	
-	private String Name;
-	private long MobileNumber;
-	private String Plan;
+	private String name;
+	private long mobileNumber;
+	private String plan;
 	private int amount;
 	public Bill(String name, long mobileNumber) {
 		super();
-		this.Name = name;
-		this.MobileNumber = mobileNumber;
+		this.name = name;
+		this.mobileNumber = mobileNumber;
 	}
 	public Bill() {
 		super();
@@ -17,28 +17,28 @@ public class Bill {
 	}
 	public Bill(String name,  long mobileNumber, String plan, int amount) {
 		super();
-		this.Name = name;
-		this.MobileNumber = mobileNumber;
-		this.Plan = plan;
+		this.name = name;
+		this.mobileNumber = mobileNumber;
+		this.plan = plan;
 		this.amount = amount;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		name = name;
 	}
 	public long getMobileNumber() {
-		return MobileNumber;
+		return mobileNumber;
 	}
 	public void setMobileNumber(long mobileNumber) {
-		MobileNumber = mobileNumber;
+		mobileNumber = mobileNumber;
 	}
 	public String getPlan() {
-		return Plan;
+		return plan;
 	}
 	public void setPlan(String plan) {
-		Plan = plan;
+		plan = plan;
 	}
 	public int getAmount() {
 		return amount;
