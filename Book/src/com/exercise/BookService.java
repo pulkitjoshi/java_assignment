@@ -2,43 +2,43 @@ package com.exercise;
 
 public class BookService {
 	
-	public double Discount(Book b) {
+	public double discount(Book mybook) {
 		
-		double discount=0.0;
+		double discountPrice=0.0;
 		
-		if(b.getPrice()>=500 && b.getPrice()<1000) {
+		if(mybook.getPrice()>=500 && mybook.getPrice()<1000) {
 			
-			discount = 50.00;
-			
-		}
-		
-		else if (b.getPrice()>=1000) {
-			
-			discount = 150;
+			discountPrice = 50.00;
 			
 		}
 		
-		return discount;
+		else if (mybook.getPrice()>=1000) {
+			
+			discountPrice = 150;
+			
+		}
+		
+		return discountPrice;
 		
 		
 	}
 	
 	
-	public String Discount(String custtype) {
+	public String discount(String custType) {
 		
-		String discount = "0%";
+		String discountPercent = "0%";
 		
-		if(custtype.equals("corparate")) {
+		if(custType.equals("corparate")) {
 			
-			discount = "10%";
+			discountPercent = "10%";
 		}
 		
-		else if (custtype.equals("retail")) {
+		else if (custType.equals("retail")) {
 			
-			discount = "2%";
+			discountPercent = "2%";
 		}
 		
-		return discount;
+		return discountPercent;
 	}
 	
 

@@ -9,12 +9,12 @@ public class DiscountApplication {
 		Book math = new Book(101,"MATH","RD SHARMA",600);
 		BookService discount = new BookService();
 		
-		System.out.println(discount.Discount(math));
+		System.out.println(discount.discount(math));
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the customer type");
-		String custtype = sc.next();
-		System.out.println(discount.Discount(custtype));
+		String custType = sc.next();
+		System.out.println(discount.discount(custType));
 		
 	}
 
