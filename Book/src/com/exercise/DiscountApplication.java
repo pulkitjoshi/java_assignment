@@ -15,6 +15,7 @@ public class DiscountApplication {
 		System.out.println("Enter the customer type");
 		String custType = sc.next();
 		System.out.println(discount.discount(custType));
+		sc.close();
 		
 	}
 
