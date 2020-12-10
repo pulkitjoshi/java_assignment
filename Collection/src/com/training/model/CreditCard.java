@@ -1,6 +1,6 @@
 package com.training.model;
 
-public class CreditCard {
+public class CreditCard implements Comparable<CreditCard>{
 	
 	private long cardNumber;
 	private String cardHolderName;
@@ -65,6 +65,11 @@ public class CreditCard {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "CreeditCard[CardNumber="+cardNumber+"cardHolderName="+cardHolderName+"CreditLimit="+creditLimit+"]";
+	}
+	@Override
+	public int compareTo(CreditCard otherObj) {
+		// TODO Auto-generated method stub
+		return this.cardHolderName.compareTo(otherObj.cardHolderName);
 	}
 																	
 

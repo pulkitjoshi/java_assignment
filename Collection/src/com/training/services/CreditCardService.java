@@ -33,6 +33,14 @@ public class CreditCardService implements DataAccess<CreditCard> {
 		// TODO Auto-generated method stub
 		return this.cardList;
 	}
+
+
+	@Override
+	public List<CreditCard> sortList() {
+		// TODO Auto-generated method stub
+		Collections.sort(this.cardList);
+		return this.cardList;
+	}
 	
 	
 	

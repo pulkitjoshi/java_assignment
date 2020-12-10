@@ -1,11 +1,20 @@
 package com.training;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.training.model.CreditCard;
 import com.training.services.CreditCardService;
 
 public class Application {
+	
+	public static void print(Collection<CreditCard> list) {
+		for(CreditCard eachCard : list) {
+			System.out.println(eachCard);
+		}
+		
+	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -23,9 +32,13 @@ public class Application {
 		System.out.println(service.add(card4));
 		
 		List<CreditCard> list =service.findAll();
-		for(CreditCard eachCard : list) {
-			System.out.println(eachCard);
-		}
+		print(list);
+		
+		
+		System.out.println("Sorted ny name");
+		
+		List<CreditCard> sortedByName =service.sortList();
+		print(sortedByName);
 
 	}
 
