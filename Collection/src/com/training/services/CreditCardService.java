@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.training.ifaces.DataAccess;
 import com.training.model.CreditCard;
+import com.training.utils.CardNumberComparator;
 public class CreditCardService implements DataAccess<CreditCard> {
 	
 	
@@ -36,12 +37,27 @@ public class CreditCardService implements DataAccess<CreditCard> {
 
 
 	@Override
-	public List<CreditCard> sortList() {
+	public  List<CreditCard> sortList(String sortBy) {
 		// TODO Auto-generated method stub
-		Collections.sort(this.cardList);
+		switch(sortBy){
+		case "cardHolderName":
+			Collections.sort(this.cardList);
+			break;
+		case "cardNumber":
+			Collections.sort(this.cardList, new CardNumberComparator());
+			break;	
+		default:
+			break;
+		
+			
+		
+		
+		}	
 		return this.cardList;
+		
+	
 	}
 	
 	
 	
-}
+	}

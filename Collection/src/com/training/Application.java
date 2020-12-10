@@ -37,8 +37,14 @@ public class Application {
 		
 		System.out.println("Sorted ny name");
 		
-		List<CreditCard> sortedByName =service.sortList();
+		List<CreditCard> sortedByName =service.sortList("cardHolderName");
 		print(sortedByName);
+		
+		System.out.println("Sorted ny Card Number");
+		
+		List<CreditCard> sortedByNumber =service.sortList("cardNumber");
+		print(sortedByNumber);
+		
 
 	}
 
