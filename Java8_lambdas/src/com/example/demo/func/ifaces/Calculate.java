@@ -4,5 +4,9 @@ package com.example.demo.func.ifaces;
 public interface Calculate<T,R> {
 	
 	R apply(T t);
+	
+	default double offer() {
+		return 2.0;
+	}
 
 }
