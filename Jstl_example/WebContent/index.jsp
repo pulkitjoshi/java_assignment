@@ -11,6 +11,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<header>
+<%@ include file="menu.html" %>
+</header>
+
 <c:set var="heading" value="Horizon College" scope="page"></c:set>
 <h1 style="text-align:center;"><c:out value="${heading } "></c:out></h1>
 <form action="student" method="get">
@@ -27,5 +31,7 @@
   </div>
 
 </form>
+
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

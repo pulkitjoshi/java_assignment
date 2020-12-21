@@ -9,7 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+ 
+<header>
+<%@ include file="menu.html" %>
+</header>
+
 <h2 Style="text-align:center;">Student List</h2>
+<h2><c:out value="${param.number}"></c:out></h2>
+
 <table>
 	<tr>
 	<th>Roll Number</th>
@@ -27,6 +34,6 @@
 	
 
 </table>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
