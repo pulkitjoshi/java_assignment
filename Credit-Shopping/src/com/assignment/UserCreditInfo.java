@@ -9,7 +9,7 @@ public class UserCreditInfo {
 
 	public UserCreditInfo() {
 		super();
-		this.userMap = new HashMap<String,Integer>();;
+		this.userMap = new HashMap<String,Integer>();
 		this.userMap.put("AMAN", 4000);
 		this.userMap.put("AKHIL", 2000);
 		this.userMap.put("ROHIT", 5000);
