@@ -1,0 +1,21 @@
+Contact Groups Info:-
+
+                   CONTACT TYPE                    TOTAL COUNT  
+
+            PROFESSIONAL FRIEND                              1  
+                   CLOSE FRIEND                              2  
+                       RELATIVE                              3  
+
+
+
+
+Contact List:-
+
+                           NAME                 CONTACT NUMBER                   CONTACT TYPE 
+
+                         VISHAL                     8574653647            PROFESSIONAL FRIEND 
+                          SAHIL                    94857364785                   CLOSE FRIEND 
+                         TUSHAR                     8957485746                   CLOSE FRIEND 
+                          AKHIL          7485909876,8976543567                       RELATIVE 
+                          ROHIT                     8364788273                       RELATIVE 
+                       SATYAKAM                     7384954985                       RELATIVE 
