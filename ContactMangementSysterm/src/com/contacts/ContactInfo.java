@@ -13,6 +13,12 @@ public class ContactInfo {
 	LocalDate dateOfBirth;
 	private String email;
 	private String contactType;
+	
+	public ContactInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	public ContactInfo(String name, String address, String mobileNumber, String imgReference, LocalDate dateOfBirth,
 			String email, String contactType) {
 		super();
@@ -25,12 +31,16 @@ public class ContactInfo {
 		this.contactType = contactType;
 	}
 	
-	public ContactInfo() {
+	public ContactInfo(String name,String mobileNumber) {
 		super();
 		// TODO Auto-generated constructor stub
+		this.name = name;
+		this.mobileNumber = mobileNumber;
 	}
 	
 	
+	
+
 	public String getName() {
 		return name;
 	}

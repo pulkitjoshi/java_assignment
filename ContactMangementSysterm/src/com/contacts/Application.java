@@ -1,5 +1,6 @@
 package com.contacts;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.time.LocalDate;
@@ -54,41 +55,78 @@ public class Application {
 		
 			
 		   DataAccess<ContactInfo> dao = new ContactImpl();
-		   switch(option) {
+		   String fileName;
+		switch(option) {
 		   
 		   case 1:
 			   
 			   System.out.print("Enter Contact Details\nName := ");
 			   name = sc.next()+sc.nextLine();
-			   System.out.print("Address := ");
-			   address = sc.next()+sc.nextLine();
+			   
 			   System.out.print("Mobile Number := ");
 			   number = sc.next()+sc.nextLine();
-			   System.out.print("imgRef := ");
-			   imgRef = sc.next()+sc.nextLine();
-			   System.out.print("Date of Brth := ");
 			   
-			   dob = sc.next()+sc.nextLine();
-			   LocalDate localDate;
-				try {
-					localDate = LocalDate.parse(dob);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.getStackTrace();
-					System.err.println("\nInvalid Date Type\n");
-					continue;
-				}
+			   ContactInfo  availabityinfo = new ContactInfo(name,number);
+			   int status = dao.checkAvailability(availabityinfo);
+			   int nameoption = 0;
+			   if(status==1) {
+				   
+				   System.out.println("\nNumber Already Linked With "+availabityinfo.getName());
+			   }
 			   
-			   System.out.print("Email := ");
-			   email = sc.next()+sc.nextLine();
-			   System.out.print("Contact Type := ");
-			   type = sc.next()+sc.nextLine();
-			   
-			   
-			   ContactInfo  newcontact = new ContactInfo(name,address,number,imgRef,localDate,email,type);
-		   
-			   int rowsAdded = dao.add(newcontact);
-			   System.out.println("\nrow Added:= "+rowsAdded+"\n");
+			   while(status==2) {
+				   
+				   System.out.print("\n"+availabityinfo.getName().toUpperCase()+" Already Exist \n 1) Add Contact For existing Name\n 2) Modify Name\nSelect Option := ");
+					nameoption = sc.nextInt();
+					
+					if(nameoption==1)
+					{
+						 int rowsAdded = dao.numberToExistingContact(availabityinfo);
+						 System.out.println("\nrow Added:= "+rowsAdded+"\n");
+						 status= 1;
+					}
+					
+					if(nameoption==2)
+					{
+						System.out.print("\nEnter New Name: ");
+						String newName = sc.next()+ sc.nextLine();
+						availabityinfo.setName(newName);
+						System.out.println(status+availabityinfo.getName()+availabityinfo.getMobileNumber());
+						status = dao.checkAvailability(availabityinfo);
+					}
+					
+			   }
+			  
+			   if(status==0) {
+					   System.out.print("Address := ");
+					   address = sc.next()+sc.nextLine();
+					  
+					   System.out.print("imgRef := ");
+					   imgRef = sc.next()+sc.nextLine();
+					   System.out.print("Date of Brth := ");
+					   
+					   dob = sc.next()+sc.nextLine();
+					   LocalDate localDate;
+						try {
+							localDate = LocalDate.parse(dob);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.getStackTrace();
+							System.err.println("\nInvalid Date Type\n");
+							continue;
+						}
+					   
+					   System.out.print("Email := ");
+					   email = sc.next()+sc.nextLine();
+					   System.out.print("Contact Type := ");
+					   type = sc.next()+sc.nextLine();
+					   
+					   
+					   ContactInfo  newcontact = new ContactInfo(availabityinfo.getName(),address,number,imgRef,localDate,email,type);
+				   
+					   int rowsAdded = dao.add(newcontact);
+					   System.out.println("\nrow Added:= "+rowsAdded+"\n");
+			   }
 			   break;
 			   
 		   case 2:
@@ -164,7 +202,20 @@ public class Application {
 				System.out.println("row Deleted:= "+rowsDeleted);
 			   break;
 			   
+		   
 		   case 4:
+			   System.out.print("Enter File Name := ");
+			   fileName = sc.next()+sc.nextLine();
+			   File myFile = new File(fileName);
+			   int rowsAdded = dao.addContactFromFile(myFile);
+			   System.out.println("row Added:= "+rowsAdded);
+			   break;
+		   
+		   
+		   
+		   
+		   
+		   case 5:
 			   			
 			   System.out.print("Enter BirthDay Month := ");
 				int birthdayMonth = sc.nextInt();
@@ -185,7 +236,7 @@ public class Application {
 			   break;
 			   
 			   
-		   case 5: 
+		   case 6: 
 			  
 			   interloop = true;
 			   while(interloop)
@@ -201,7 +252,7 @@ public class Application {
 			   break;
 			
 		
-		   case 6:
+		   case 7:
 			   interloop = true;
 			   while(interloop)
 			   {
@@ -216,13 +267,13 @@ public class Application {
 			   
 			   break;
 			   
-			case 7:
+			case 8:
 				interloop = true;
 				 while(interloop)
 				   {
 					   System.out.print("\n 1) Genrate Report in Console\t2) Genrate Report in File\t3) exit\nSelect Option := ");
 						genrateoption = sc.nextInt();
-					     list= dao.ContactWithNameAndNumber(genrateoption);
+					     list= dao.contactWithNameAndNumber(genrateoption);
 					   					
 						 interloop =  ConsoleDisplay(list,genrateoption);
 					  
@@ -231,13 +282,13 @@ public class Application {
 				
 				break;
 			
-			case 8:
+			case 9:
 				interloop = true;
 				 while(interloop)
 				   {
 					   System.out.print("\n 1) Genrate Report in Console\t2) Genrate Report in File\t3) exit\nSelect Option := ");
 						genrateoption = sc.nextInt();
-					     list= dao.ContactWithNameAndEmail(genrateoption);
+					     list= dao.contactWithNameAndEmail(genrateoption);
 					   					
 						 interloop =  ConsoleDisplay(list,genrateoption);
 					  
