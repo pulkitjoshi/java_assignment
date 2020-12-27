@@ -1,8 +1,26 @@
                            NAME                          Email  
 
-                          AKHIL                 aman@gmail.com  
-                       SATYAKAM                 skam@gmail.com  
-                         TUSHAR             tussicha@gmail.com  
+                          KASHI                 kashi@gmail.om  
+                          LOHIT                 raju@gmail.com  
+                            MAX                  max@gmail.com  
+                           ABC8                 raju@gmail.com  
+                           ABC6                 raju@gmail.com  
+                          RAMIT                ramit@gmail.com  
+                           ABC7                 raju@gmail.com  
+                           ABC4                 raju@gmail.com  
                           SAHIL                sahil@gmail.com  
-                          ROHIT                rohit@gmail.com  
-                         VISHAL               vishal@gmail.com  
+                           ABC2                 raju@gmail.com  
+                           ABC3                 raju@gmail.com  
+                           ABC1                 raju@gmail.com  
+                         KALASH                 raju@gmail.com  
+                          RONIT                ronit@gmail.com  
+                         KANIKA                 raju@gmail.com  
+                           ATUL              atulnew@gmail.com  
+                           MAHI                 aman@gmail.com  
+                            KAM                  kam@gmail.com  
+                             KA                 raju@gmail.com  
+                         RAKESH               rakesh@gmail.com  
+                       SATYAKAM                 skam@gmail.com  
+                           RAJU                 raju@gmail.com  
+                           UDIT                 udit@gmail.com  
+                            RAM                   ram@gail.com  

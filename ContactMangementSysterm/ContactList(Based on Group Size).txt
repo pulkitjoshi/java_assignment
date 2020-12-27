@@ -2,9 +2,10 @@ Contact Groups Info:-
 
                    CONTACT TYPE                    TOTAL COUNT  
 
-            PROFESSIONAL FRIEND                              1  
-                   CLOSE FRIEND                              2  
-                       RELATIVE                              3  
+              PROFESSION FRIEND                              2  
+            PROFESSIONAL FRIEND                              2  
+                   CLOSE FRIEND                              5  
+                       RELATIVE                             15  
 
 
 
@@ -13,9 +14,27 @@ Contact List:-
 
                            NAME                 CONTACT NUMBER                   CONTACT TYPE 
 
-                         VISHAL                     8574653647            PROFESSIONAL FRIEND 
+                           ABC3                     1475864758              PROFESSION FRIEND 
+                           ABC8                     1475848495              PROFESSION FRIEND 
+                            MAX                     8475647586            PROFESSIONAL FRIEND 
+                         RAKESH                     8796774653            PROFESSIONAL FRIEND 
+                           ABC2                     1475854790                   CLOSE FRIEND 
+                           ABC7                     1475824354                   CLOSE FRIEND 
+                            KAM                     8796767586                   CLOSE FRIEND 
+                            RAM                     9687098685                   CLOSE FRIEND 
                           SAHIL                    94857364785                   CLOSE FRIEND 
-                         TUSHAR                     8957485746                   CLOSE FRIEND 
-                          AKHIL          7485909876,8976543567                       RELATIVE 
-                          ROHIT                     8364788273                       RELATIVE 
+                           ABC1                     1475865732                       RELATIVE 
+                           ABC4                     1475809850                       RELATIVE 
+                           ABC6                     1475824152                       RELATIVE 
+                           ATUL                     8005529692                       RELATIVE 
+                             KA                     4475890984                       RELATIVE 
+                         KALASH                    54758909784                       RELATIVE 
+                         KANIKA                    14758909784                       RELATIVE 
+                          KASHI                     8475909873                       RELATIVE 
+                          LOHIT                    64758909784                       RELATIVE 
+                           MAHI                    85746590987                       RELATIVE 
+                           RAJU                     6475890987                       RELATIVE 
+                          RAMIT                     8796785948                       RELATIVE 
+                          RONIT                     8796719028                       RELATIVE 
                        SATYAKAM                     7384954985                       RELATIVE 
+                           UDIT                     9867509863                       RELATIVE 

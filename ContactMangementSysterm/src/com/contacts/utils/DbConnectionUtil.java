@@ -1,11 +1,8 @@
-package com.training.utils;
+package com.contacts.utils;
 
 import java.sql.*;
 import java.util.Properties;
 
-import javax.sql.RowSet;
-import javax.sql.rowset.CachedRowSet;
-import javax.sql.rowset.RowSetFactory;
 
 import java.io.*;
 public class DbConnectionUtil {

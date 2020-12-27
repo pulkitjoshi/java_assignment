@@ -1,23 +1,25 @@
-package com.training.ifaces;
+package com.contacts.ifaces;
 
 import java.io.File;
 import java.util.List;
-import java.util.Map;
 
-import com.contacts.ContactInfo;
+import com.contacts.entity.ContactInfo;
+
+
+
 
 public interface DataAccess<T> {
 	
 	public int add(T t);
-	public int[] addInBatch(T ...t);
 	
 	
 	
 	
-	public int remove(String name);
+	
+	public int remove(T t);
 	
 	
-	public int update(String name, String string);
+	public int updateDetails(String name, String updateAtt,String updateval);
 	public List<String> birthdayReport( int key,int option);
 	
 	public List<String> contactListByGroup(int option);
@@ -26,9 +28,13 @@ public interface DataAccess<T> {
 	public List<String> contactWithNameAndNumber(int option);
 	public List<String> contactWithNameAndEmail(int option);
 	
-	public int checkAvailability(ContactInfo t);
-	public int numberToExistingContact(ContactInfo t);
+	public int checkAvailability(T t);
+	public int numberToExistingContact(T t);
 	public int addContactFromFile(File file);
+
+	public int updateNumber(ContactInfo t, String updateVal,int numberLinkedWithContact);
+
+	int totalNumberLinkedWithName(String name);
 	
 	
 

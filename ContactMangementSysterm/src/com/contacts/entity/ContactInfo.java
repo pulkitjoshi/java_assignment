@@ -1,4 +1,4 @@
-package com.contacts;
+package com.contacts.entity;
 
 import java.time.LocalDate;
 
@@ -14,11 +14,7 @@ public class ContactInfo {
 	private String email;
 	private String contactType;
 	
-	public ContactInfo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
+		
 	public ContactInfo(String name, String address, String mobileNumber, String imgReference, LocalDate dateOfBirth,
 			String email, String contactType) {
 		super();

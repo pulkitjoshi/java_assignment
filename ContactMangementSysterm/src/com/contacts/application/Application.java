@@ -1,19 +1,21 @@
-package com.contacts;
+package com.contacts.application;
 
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.time.LocalDate;
-import java.time.Month;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+
 import java.util.Scanner;
 
-import com.training.ifaces.DataAccess;
-import com.training.utils.DbConnectionUtil;
+import com.contacts.daos.ContactImpl;
+import com.contacts.entity.ContactInfo;
+import com.contacts.ifaces.DataAccess;
+import com.contacts.utils.DbConnectionUtil;
 
 public class Application {
 
@@ -30,14 +32,14 @@ public class Application {
 		
 	   List<String> list=new ArrayList<String>();
 	   
-		
-		ContactInfo newname = new ContactInfo();
+
 		try {
 			Connection con = DbConnectionUtil.getMySqlConnection();
 			DatabaseMetaData metaData = con.getMetaData();
 			System.out.println("datbase metadata -class:="+metaData.getClass().getName());
 			System.out.println("datbase metadata -class:="+metaData.getURL());
 			System.out.println("database metadata -class:="+metaData.getDatabaseProductName());
+			con.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,15 +50,16 @@ public class Application {
 		
 		while(loop)
 		{
-			System.out.println("Please Choose your option\n1: Add New Contact\t2: Update Contact\t3: Delete Contact\n4: BirthDay Report\t5: Genrate Contact List Based on Group\t6: Genrate Contact List Based on Group Size\n7: Exit");
+			System.out.println("Please Choose your option\n1: Add New Contact\t2: Update Contact\t3: Delete Contact\t4: Add Contacts from File\t5: BirthDay Report\n"
+								+ "6: Genrate Contact List Based on Group\t\t7: Genrate Contact List Based on Group Size\n"
+								+ "8: Genrate Contact List with Name and Number\t9: Genrate Contact List with Name and Email\n"
+								+ "10: Exit");
 			System.out.print("Enter your Choice := ");
 			int option = sc.nextInt();
-		
-		
-			
+						
 		   DataAccess<ContactInfo> dao = new ContactImpl();
 		   String fileName;
-		switch(option) {
+		   switch(option) {
 		   
 		   case 1:
 			   
@@ -71,7 +74,7 @@ public class Application {
 			   int nameoption = 0;
 			   if(status==1) {
 				   
-				   System.out.println("\nNumber Already Linked With "+availabityinfo.getName());
+				   System.out.println("\nNumber Already Linked With "+availabityinfo.getName()+"\n");
 			   }
 			   
 			   while(status==2) {
@@ -91,7 +94,6 @@ public class Application {
 						System.out.print("\nEnter New Name: ");
 						String newName = sc.next()+ sc.nextLine();
 						availabityinfo.setName(newName);
-						System.out.println(status+availabityinfo.getName()+availabityinfo.getMobileNumber());
 						status = dao.checkAvailability(availabityinfo);
 					}
 					
@@ -133,57 +135,83 @@ public class Application {
 			   
 			   System.out.print("\nEnter Name := ");
 				name = sc.next()+sc.nextLine();
-				boolean interloop=true;
-				while(interloop)
+				availabityinfo = new ContactInfo(name,number);
+				status = dao.checkAvailability(availabityinfo);
+				if(status!=2)
 				{
-					System.out.print("\nField You Want to Update\n1: Name   2: Address   3: Profile Pic   4: Date of Birth   5: Email   \n6: Contact Number   7:Contact Type   8:Done\nEnter Your Choice:= ");
+					System.out.println("Contact with this Name Not Aailable\n");
+				}
+				boolean interloop=true;
+				String updateVal = null;
+				while(interloop && status==2)
+				{
+					System.out.print("\nField You Want to Update\n1: Name   2: Address   3: Profile Pic   4: Date of Birth   \n5: Email   6: Contact Number   7:Contact Type   8:Done\nEnter Your Choice:= ");
 				    String interchoice=sc.next();
 				  
 				    if(interchoice.equals("1"))
 					{
-						
-						int rowupdate = dao.update(name, "contactName");
-						
-						if(rowupdate!=404) {
-							System.out.println("Rows Updated:= "+rowupdate);
-						}
-							
-							interloop=false;
+				    	System.out.print("\nEnter the New Contact Name := ");
+						updateVal = sc.next()+sc.nextLine();
+						int rowupdate = dao.updateDetails(name, "contactName",updateVal);
+						System.out.println("Rows Updated:= "+rowupdate);
+						interloop=false;
 							
 						
 					}
 				    else if(interchoice.equals("2"))
 					{
-						
-						int rowupdate = dao.update(name, "address");
-						interloop=conditionCheck(rowupdate);
+				    	System.out.print("\nEnter the New Contact Address := ");
+						updateVal = sc.next()+sc.nextLine();
+						int rowupdate = dao.updateDetails(name, "address",updateVal);
+						System.out.println("Rows Updated:= "+rowupdate);
 						
 					}
 					else if(interchoice.equals("3"))
 					{
-						int rowupdate = dao.update(name, "picRef");
-						interloop=conditionCheck(rowupdate);
+						System.out.print("\nEnter the New Pic Refrence := ");
+						updateVal = sc.next()+sc.nextLine();
+						int rowupdate = dao.updateDetails(name, "picRef",updateVal);
+						System.out.println("Rows Updated:= "+rowupdate);
 					}
 					else if(interchoice.equals("4"))
 					{
-						int rowupdate = dao.update(name, "dob");
-						interloop=conditionCheck(rowupdate);
+						System.out.print("\nEnter the New Date of Birth := ");
+						updateVal = sc.next()+sc.nextLine();
+						int rowupdate = dao.updateDetails(name, "dob",updateVal);
+						System.out.println("Rows Updated:= "+rowupdate);
 							
 					}
 					else if(interchoice.equals("5"))
 					{
-						int rowupdate = dao.update(name, "email");
-						interloop=conditionCheck(rowupdate);
+						System.out.print("\nEnter the New Contact Email := ");
+						updateVal =sc.next()+ sc.nextLine();
+						int rowupdate = dao.updateDetails(name, "email",updateVal);
+						System.out.println("Rows Updated:= "+rowupdate);
 					}
 					else if(interchoice.equals("6"))
 					{
-						int rowupdate = dao.update(name, "contactNumber");
-						interloop=conditionCheck(rowupdate);
+						
+						int toalNumberLinked = dao.totalNumberLinkedWithName(name);
+						number=null;
+						if(toalNumberLinked>1)
+						{
+							System.out.print("\nEnter the old Contact Number := ");
+							number = sc.next()+sc.nextLine();
+						}
+						
+						ContactInfo  updateInfo = new ContactInfo(name,number);
+						System.out.print("\nEnter the New Contact Number := ");
+						updateVal = sc.next()+sc.nextLine();
+						int rowupdate = dao.updateNumber(updateInfo, updateVal,toalNumberLinked);
+						System.out.println("Rows Updated:= "+rowupdate);
 					}
 					else if(interchoice.equals("7"))
 					{
-						int rowupdate = dao.update(name, "contactType");
-						interloop=conditionCheck(rowupdate);
+						System.out.print("\nEnter the New Contact Type := ");
+						updateVal = sc.next()+sc.nextLine();
+						int rowupdate = dao.updateDetails(name, "contactType",updateVal);
+						System.out.println("Rows Updated:= "+rowupdate);
+						
 					}
 					else 
 					{
@@ -195,11 +223,27 @@ public class Application {
 			   
 	
 		   case 3:
-			   
+			    number=null;
+			    System.out.print("\n 1) Delete Contact\t2) Delete one Number From Contact\nSelect Option := ");
+			    genrateoption = sc.nextInt();
 				System.out.print("Enter Name := ");
 				name = sc.next()+sc.nextLine();
-				int rowsDeleted = dao.remove(name);
-				System.out.println("row Deleted:= "+rowsDeleted);
+				if(genrateoption==2)
+				{
+					System.out.print("Enter Number := ");
+					number = sc.next()+sc.nextLine();
+				}
+				ContactInfo  deleteInfo = new ContactInfo(name,number);
+				int rowsDeleted = dao.remove(deleteInfo);
+				
+				if(rowsDeleted==0)
+				{
+					System.out.println("No Contact With Above Details");
+				}
+				else
+				{
+					System.out.println("row Deleted:= "+rowsDeleted);
+				}
 			   break;
 			   
 		   
@@ -211,10 +255,7 @@ public class Application {
 			   System.out.println("row Added:= "+rowsAdded);
 			   break;
 		   
-		   
-		   
-		   
-		   
+		  		   
 		   case 5:
 			   			
 			   System.out.print("Enter BirthDay Month := ");
@@ -222,9 +263,8 @@ public class Application {
 				interloop = true;
 				while(interloop)
 				   {
-						System.out.print("\n 1) Genrate Report in Console\t2) Genrate Report in File\t3) exit\nSelect Option := ");
-						genrateoption = sc.nextInt();
 						if(birthdayMonth<13 && birthdayMonth>0) {
+							     genrateoption = getOption();
 								list=dao.birthdayReport(birthdayMonth,genrateoption);
 								 interloop =  ConsoleDisplay(list,genrateoption);
 						}
@@ -241,8 +281,7 @@ public class Application {
 			   interloop = true;
 			   while(interloop)
 			   {
-				   System.out.print("\n 1) Genrate Report in Console\t2) Genrate Report in File\t3) exit\nSelect Option := ");
-					genrateoption = sc.nextInt();
+				   genrateoption = getOption();
 				   list= dao.contactListByGroup(genrateoption);
 				   					
 					 interloop =  ConsoleDisplay(list,genrateoption);
@@ -256,8 +295,7 @@ public class Application {
 			   interloop = true;
 			   while(interloop)
 			   {
-				   System.out.print("\n 1) Genrate Report in Console\t2) Genrate Report in File\t3) exit\nSelect Option := ");
-					genrateoption = sc.nextInt();
+				   genrateoption = getOption();
 				   list= dao.contactListByGroupSize(genrateoption);
 				   					
 					 interloop =  ConsoleDisplay(list,genrateoption);
@@ -271,8 +309,7 @@ public class Application {
 				interloop = true;
 				 while(interloop)
 				   {
-					   System.out.print("\n 1) Genrate Report in Console\t2) Genrate Report in File\t3) exit\nSelect Option := ");
-						genrateoption = sc.nextInt();
+					 	 genrateoption = getOption();
 					     list= dao.contactWithNameAndNumber(genrateoption);
 					   					
 						 interloop =  ConsoleDisplay(list,genrateoption);
@@ -286,8 +323,7 @@ public class Application {
 				interloop = true;
 				 while(interloop)
 				   {
-					   System.out.print("\n 1) Genrate Report in Console\t2) Genrate Report in File\t3) exit\nSelect Option := ");
-						genrateoption = sc.nextInt();
+						genrateoption = getOption();
 					     list= dao.contactWithNameAndEmail(genrateoption);
 					   					
 						 interloop =  ConsoleDisplay(list,genrateoption);
@@ -298,9 +334,10 @@ public class Application {
 				break;
 			
 		   default:
-			   sc.close();
-			   loop=false;
-			   break;
+				   sc.close();
+				   loop=false;
+				   
+				   break;
 				   
 		   }
 
@@ -308,15 +345,20 @@ public class Application {
 	}
 	
 	
-	private static boolean conditionCheck(int rowupdate) {
-		boolean interloop = false;
-		if(rowupdate!=404)
-		{
-			System.out.println("Rows Updated:= "+rowupdate);
-			interloop=true;
-		}
-		return interloop;
+	
+	private static int getOption()
+	{
+		 System.out.print("\n 1) Genrate Report in Console\t2) Genrate Report in File\t3) exit\nSelect Option := ");
+			Scanner sc =  new Scanner(System.in);
+			int selectedOption = sc .nextInt();
+			
+			return selectedOption;
+			
+		
 	}
+	
+	
+
 	
 	
 	private static  boolean ConsoleDisplay(List<String> list,int genrateoption) {

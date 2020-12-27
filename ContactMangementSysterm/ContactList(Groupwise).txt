@@ -2,9 +2,21 @@ RELATIVE:-
 
                            NAME                         E-MAIL                 CONTACT NUMBER 
 
-                          AKHIL                 aman@gmail.com          7485909876,8976543567 
-                          ROHIT                rohit@gmail.com                     8364788273 
+                           ABC1                 raju@gmail.com                     1475865732 
+                           ABC4                 raju@gmail.com                     1475809850 
+                           ABC6                 raju@gmail.com                     1475824152 
+                           ATUL              atulnew@gmail.com                     8005529692 
+                             KA                 raju@gmail.com                     4475890984 
+                         KALASH                 raju@gmail.com                    54758909784 
+                         KANIKA                 raju@gmail.com                    14758909784 
+                          KASHI                 kashi@gmail.om                     8475909873 
+                          LOHIT                 raju@gmail.com                    64758909784 
+                           MAHI                 aman@gmail.com                    85746590987 
+                           RAJU                 raju@gmail.com                     6475890987 
+                          RAMIT                ramit@gmail.com                     8796785948 
+                          RONIT                ronit@gmail.com                     8796719028 
                        SATYAKAM                 skam@gmail.com                     7384954985 
+                           UDIT                 udit@gmail.com                     9867509863 
 
 
 
@@ -12,8 +24,11 @@ CLOSE FRIEND:-
 
                            NAME                         E-MAIL                 CONTACT NUMBER 
 
+                           ABC2                 raju@gmail.com                     1475854790 
+                           ABC7                 raju@gmail.com                     1475824354 
+                            KAM                  kam@gmail.com                     8796767586 
+                            RAM                   ram@gail.com                     9687098685 
                           SAHIL                sahil@gmail.com                    94857364785 
-                         TUSHAR             tussicha@gmail.com                     8957485746 
 
 
 
@@ -21,7 +36,8 @@ PROFESSIONAL FRIEND:-
 
                            NAME                         E-MAIL                 CONTACT NUMBER 
 
-                         VISHAL               vishal@gmail.com                     8574653647 
+                            MAX                  max@gmail.com                     8475647586 
+                         RAKESH               rakesh@gmail.com                     8796774653 
 
 
 
