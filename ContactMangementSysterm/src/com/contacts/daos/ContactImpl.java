@@ -665,6 +665,7 @@ public class ContactImpl implements DataAccess<ContactInfo> {
 			list.add(info);
 		 });
 		
+		 		
 		if(option==2) {			
 			
 			

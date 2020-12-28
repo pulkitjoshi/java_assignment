@@ -28,7 +28,7 @@ class DatabaseTest {
 	
 	@Test
 	@DisplayName(value="Test rerturn true If Database Connection is Established ")
-	void test() throws SQLException, InterruptedException {
+	void test() throws SQLException {
 		
 		boolean Expected = con.isValid(30);
 		boolean actual = true;
