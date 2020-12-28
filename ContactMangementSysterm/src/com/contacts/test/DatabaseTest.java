@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,9 +22,18 @@ class DatabaseTest {
 
 	private Connection con;
 	private DataAccess<ContactInfo> dao;
+	
+	
+	@BeforeAll
+	public void beforeTestStarted() {
+		con = DbConnectionUtil.getMySqlConnection();
+		
+	}
+	
+	
 	@BeforeEach
 	public void beforeTestMethod() {
-		con = DbConnectionUtil.getMySqlConnection();
+		
 		 dao = new ContactImpl();
 	}
 	
@@ -96,5 +107,13 @@ class DatabaseTest {
 		  assertEquals(0, ContactDeleted);
 	        return;
 	    }
+	 
+	
+	 
+	 @AfterAll
+	public void afterAllTestCompleted() throws SQLException {
+			 con.close();
+			
+		}
 
 }
