@@ -10,7 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -176,15 +176,27 @@ public class ContactImpl implements DataAccess<ContactInfo> {
 						
 					} catch (Exception e) {
 						// TODO: handle exception
+						if (e instanceof SQLIntegrityConstraintViolationException) {
+					        // Duplicate entry
+							System.out.println("Number Already Present Cannot Add");
+					    } 
+						else {
 						e.getStackTrace();
 						System.err.println("error while accessesing contact_number table1");
+						}
 					}
 					
 					
 				} catch (SQLException e) {
 					// TODO: handle exception
+					if (e instanceof SQLIntegrityConstraintViolationException) {
+				        // Duplicate entry
+						System.out.println("Name Already Present Cannot Add");
+				    } 
+					else {
 					e.getStackTrace();
 					System.err.println("error while accessesing contact_details table");
+					}
 				}
 				 	
 		return rowsAdded2;
@@ -226,24 +238,11 @@ public class ContactImpl implements DataAccess<ContactInfo> {
 					try {
 						newContact = new ContactInfo( name, address, number,picRef,  dob, email, contactType);
 												
-						int status = checkAvailability(newContact);
-						
-						if(status==1)
-						{
-							System.out.println("Number Already In List, Record Can't be Added of Line Number := "+lineNumber);
-						}
-						
-						if(status==2)
-						{
-							System.out.println("Name Already In List, Record Can't be Added of Line Number := "+lineNumber);
-						}
-						
-						if(status==0)
-						{
+					
+						System.out.print("Line Number := "+lineNumber+"   ");
 							rowsAdded += add(newContact);
 													
-						}
-											
+									
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						System.err.println("Error while setting Values for:= "+name+" and LineNumber := "+lineNumber);
