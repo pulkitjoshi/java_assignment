@@ -59,7 +59,7 @@ class DatabaseTest {
 
 		   assertEquals(2, nameStatus);
 		   assertEquals(1, numberStatus);
-	        return;
+	        
 	    }
 	 
 	 
@@ -72,7 +72,7 @@ class DatabaseTest {
 
 		  assertEquals(1, ContactAdded);
 		   
-	        return;
+	       
 	    }
 	 
 	@Test
@@ -87,7 +87,7 @@ class DatabaseTest {
 		  int ContactUpdate = dao.updateDetails("aman", "contactName", "mahi");
 		  assertEquals(0, ContactUpdate);
 		   
-	        return;
+	        
 	    }
 	 
 	 
@@ -105,7 +105,7 @@ class DatabaseTest {
 			
 		  ContactDeleted = dao.remove(newcontact);
 		  assertEquals(0, ContactDeleted);
-	        return;
+	        
 	    }
 	 
 	

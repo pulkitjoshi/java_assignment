@@ -1,0 +1,37 @@
+
+spring:
+  
+  application:
+    name: review-service 
+  profiles:
+  - dev
+
+server:
+  port: 4038
+  
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  
+---
+
+spring:
+  
+  application:
+    name: review-service  
+  profiles:
+  - test
+
+server:
+  port: 3939
+  
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  
