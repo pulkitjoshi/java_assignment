@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: tour-client 
+ 
+server:
+  port: 3838
+  
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  
+
