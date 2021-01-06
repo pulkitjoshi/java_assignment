@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domains.Review;
@@ -13,10 +14,25 @@ public class ReviewController {
 	private Review entity;
 	
 	
-	@GetMapping(path="/reviews")
-	public Review getReview() {
+	@GetMapping(path="/reviews/{name}")
+	public Review getReview(@PathVariable("name") String reviewerName) throws InterruptedException {
 		
-		entity.setRatig("Rating := "+entity.getRating());
+		
+		if(reviewerName.equalsIgnoreCase("ram")) {
+			
+			entity.setLocation("chennai");
+			entity.setRating(4.5);
+			entity.setReviewerName("ram");
+			
+		}
+		else {
+			 
+			Thread.sleep(6000);
+			entity.setLocation("tumkuru");
+			entity.setRating(4.2);
+			entity.setReviewerName("shyam");
+			
+		}
 		
 		return entity;
 	}
