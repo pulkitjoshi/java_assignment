@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-<%@ include file="menu.jsp" %>
+<%@include file="menu.jsp" %>
 </header>
 <div class="container">
 <%

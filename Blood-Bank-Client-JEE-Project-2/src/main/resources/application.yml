@@ -1,0 +1,10 @@
+spring:
+  
+  application:
+    name: blood-bank-client
+ 
+
+server:
+  port: 7070
+
+
